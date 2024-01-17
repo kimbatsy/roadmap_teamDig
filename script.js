@@ -4,19 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButton = document.getElementById('submitButton');
     const passwordInput = document.getElementById('passwordInput');
 
-    // Afficher la boîte de dialogue
     modal.style.display = 'block';
     passwordInput.focus();
-    // Fermer la boîte de dialogue en cliquant sur la croix
+
     closeButton.addEventListener('click', () => {
         modal.style.display = 'none';
     });
 
-    // Valider la saisie lors de l'appui sur la touche "Entrée"
     passwordInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             validatePassword();
         }
+    });
+
+    submitButton.addEventListener('click', () => {
+        validatePassword();
     });
 
     // Récupérer le mot de passe lors de la soumission
@@ -30,9 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (enteredPassword === correctPassword) {
             modal.style.display = 'none';
-            // Charger l'application une fois le mot de passe correct saisi
-            // Par exemple, charger les projets depuis Firebase
-            initializeFirebase();
+            loadProjects();
+            const newProjectButton = document.getElementById('newProjectButton');
+            const projectForm = document.getElementById('projectForm');
+
+            newProjectButton.addEventListener('click', () => {
+                projectForm.style.display = 'block';
+            });
         } else {
             alert('Accès refusé. Mot de passe incorrect.');
             window.location.href = 'index.html';
@@ -58,9 +64,11 @@ function initializeFirebase() {
       measurementId: "G-E9NJKB1338"
     };
 
-    firebase.initializeApp(firebaseConfig);
-    loadProjects();
-    setupEventListeners();
+  / Initialiser Firebase avec la configuration ci-dessus
+initializeFirebase(firebaseConfig);
+
+function initializeFirebase(config) {
+    firebase.initializeApp(config);
 }
 
 // Configuration des gestionnaires d'événements
