@@ -39,13 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initializeFirebase() {
     const firebaseConfig = {
-        apiKey: "Votre_apiKey",
-        authDomain: "Votre_authDomain",
-        projectId: "Votre_projectId",
-        storageBucket: "Votre_storageBucket",
-        messagingSenderId: "Votre_messagingSenderId",
-        appId: "Votre_appId",
-        measurementId: "Votre_measurementId"
+      apiKey: "AIzaSyCFd7dBcDV7iJzhBsiVw_MX07pSSHlAY4g",
+      authDomain: "roadmap-3a26c.firebaseapp.com",
+      projectId: "roadmap-3a26c",
+      storageBucket: "roadmap-3a26c.appspot.com",
+      messagingSenderId: "668596727318",
+      appId: "1:668596727318:web:e88f9c8948451d0b0f4f37",
+      measurementId: "G-E9NJKB1338"
     };
 
     // Initialiser Firebase avec la configuration ci-dessus
