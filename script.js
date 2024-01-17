@@ -38,6 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'index.html';
         }
     }
+ const newProjectButton = document.getElementById('newProjectButton');
+    const projectForm = document.getElementById('projectForm');
+
+    newProjectButton.addEventListener('click', () => {
+        projectForm.style.display = 'block';
+    });
+    
 });
 
 function initializeFirebase() {
