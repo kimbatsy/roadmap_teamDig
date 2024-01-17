@@ -56,6 +56,7 @@ function initializeFirebase() {
     setupEventListeners();
 }
 
+// Configuration des gestionnaires d'événements
 function setupEventListeners() {
     const newProjectButton = document.getElementById('newProjectButton');
     const projectForm = document.getElementById('projectForm');
@@ -67,10 +68,41 @@ function setupEventListeners() {
     // Autres gestionnaires d'événements ici
 }
 
-// Fonctions pour sauvegarder, supprimer, charger les projets, etc.
-// Utilisez les méthodes Firebase pour interagir avec la base de données
-// Par exemple :
-// firebase.database().ref('chemin_dans_la_base_de_données').push(data);
-// firebase.database().ref('chemin_dans_la_base_de_données').remove();
+// Ajouter un projet à Firebase
+function addProjectToFirebase(project) {
+    firebase.database().ref('projects').push(project);
+}
 
-// Assurez-vous d'adapter les méthodes Firebase en fonction de votre structure de données
+// Supprimer un projet de Firebase
+function deleteProjectFromFirebase(projectKey) {
+    firebase.database().ref(`projects/${projectKey}`).remove();
+}
+
+// Mettre à jour un projet dans Firebase
+function updateProjectInFirebase(projectKey, updatedProject) {
+    firebase.database().ref(`projects/${projectKey}`).update(updatedProject);
+}
+
+// Charger les projets depuis Firebase
+function loadProjects() {
+    clearColumns();
+    firebase.database().ref('projects').once('value')
+        .then(snapshot => {
+            const projects = snapshot.val();
+            for (const key in projects) {
+                addToColumn(projects[key]);
+            }
+        });
+}
+
+// Fonction pour éditer un projet
+function editProject(projectKey, updatedProject) {
+    updateProjectInFirebase(projectKey, updatedProject);
+    loadProjects();
+}
+
+// Fonction pour supprimer un projet
+function deleteProject(projectKey) {
+    deleteProjectFromFirebase(projectKey);
+    loadProjects();
+}
