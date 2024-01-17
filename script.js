@@ -30,12 +30,24 @@ document.addEventListener('DOMContentLoaded', () => {
             initializeFirebase();
             setupEventListeners();
             loadProjects();
+
+            const newProjectButton = document.getElementById('newProjectButton');
+            const projectForm = document.getElementById('projectForm');
+
+            newProjectButton.addEventListener('click', () => {
+                projectForm.style.display = 'block';
+            });
         } else {
             alert('Accès refusé. Mot de passe incorrect.');
             window.location.href = 'index.html';
         }
     }
 });
+
+// Reste du code Firebase et gestion d'événements
+// ...
+
+
 
 function initializeFirebase() {
     const firebaseConfig = {
