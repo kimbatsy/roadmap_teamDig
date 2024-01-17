@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cottonline's Digitalization Roadmap</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Veuillez saisir le mot de passe :</p>
+            <input type="password" id="passwordInput">
+            <button id="submitButton">Valider</button>
+        </div>
+    </div>
+
+    <div id="entête">
+        <h1>Cottonline's Digitalization Roadmap </h1>
+        <button id="newProjectButton">Add Projet</button>
+        <form id="projectForm" style="display: none;">
+        <input type="text" id="title" placeholder="Project title" required>
+        <select id="target">
+            <option value="completed">Completed</option>
+            <option value="current">Current</option>
+            <option value="near-term">Near-term</option>
+            <option value="future">Future</option>
+        </select>
+        <select id="priority">
+            <option value="high">High</option>
+            <option value="med">Medium</option>
+            <option value="low">Low</option>
+        </select>
+        <input type="text" id="department" placeholder="Department">
+        <input type="text" id="result" placeholder="Result (facultatif)">
+        <button type="button" class="btn-validate" onclick="validateProject()">Validate</button>
+        <button type="button" class="btn-cancel" onclick="cancelProject()">Cancel</button>
+    </form>
+    </div>
+    
+    <div class="container">
+        <div class="column" id="completed">
+            <h2>Completed</h2>
+        </div>
+        <div class="column" id="current">
+            <h2>Current</h2>
+        </div>
+        <div class="column" id="near-term">
+            <h2>Near Term</h2>
+        </div>
+        <div class="column" id="future">
+            <h2>Future</h2>
+        </div>
+    </div>
+   
+
+<script src="script.js"></script>
+
+</body>
+</html>
