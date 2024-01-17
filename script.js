@@ -63,12 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setupEventListeners() {
-        const newProjectButton = document.getElementById('newProjectButton');
-        const projectForm = document.getElementById('projectForm');
+    const newProjectButton = document.getElementById('newProjectButton');
+    const projectForm = document.getElementById('projectForm');
 
-        newProjectButton.addEventListener('click', () => {
-            projectForm.style.display = 'block';
-        });
+    newProjectButton.addEventListener('click', () => {
+        projectForm.style.display = 'block';
+    });
 
         const validateButton = document.getElementById('validateButton');
         const cancelButton = document.getElementById('cancelButton');
