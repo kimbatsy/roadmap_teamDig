@@ -1,4 +1,6 @@
-
+// Déclarez les boutons en dehors de la fonction addToColumn
+let modifyButton;
+let deleteButton;
 
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('passwordModal');
