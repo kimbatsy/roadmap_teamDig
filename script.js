@@ -34,41 +34,51 @@ document.addEventListener('DOMContentLoaded', () => {
             initializeFirebase();
             setupEventListeners();
             loadProjects();
-
-            const newProjectButton = document.getElementById('newProjectButton');
-            const projectForm = document.getElementById('projectForm');
-
-            newProjectButton.addEventListener('click', () => {
-                projectForm.style.display = 'block';
-            });
         } else {
             alert('Accès refusé. Mot de passe incorrect.');
             window.location.href = 'index.html';
         }
     }
+});
 
-    function initializeFirebase() {
-        const firebaseConfig = {
-            apiKey: "Votre_apiKey",
-            authDomain: "Votre_authDomain",
-            projectId: "Votre_projectId",
-            storageBucket: "Votre_storageBucket",
-            messagingSenderId: "Votre_messagingSenderId",
-            appId: "Votre_appId",
-            measurementId: "Votre_measurementId"
-        };
+function initializeFirebase() {
+    const firebaseConfig = {
+        apiKey: "Votre_apiKey",
+        authDomain: "Votre_authDomain",
+        projectId: "Votre_projectId",
+        storageBucket: "Votre_storageBucket",
+        messagingSenderId: "Votre_messagingSenderId",
+        appId: "Votre_appId",
+        measurementId: "Votre_measurementId"
+    };
 
-        // Initialiser Firebase avec la configuration ci-dessus
-        firebase.initializeApp(firebaseConfig);
-    }
+    // Initialiser Firebase avec la configuration ci-dessus
+    firebase.initializeApp(firebaseConfig);
+}
 
-    function setupEventListeners() {
+function setupEventListeners() {
     const newProjectButton = document.getElementById('newProjectButton');
     const projectForm = document.getElementById('projectForm');
 
     newProjectButton.addEventListener('click', () => {
         projectForm.style.display = 'block';
     });
+
+    const validateButton = document.getElementById('validateButton');
+    const cancelButton = document.getElementById('cancelButton');
+
+    validateButton.addEventListener('click', () => {
+        validateProject();
+    });
+
+    cancelButton.addEventListener('click', () => {
+        cancelProject();
+    });
+}
+
+// ... Le reste du code
+
+
 
         const validateButton = document.getElementById('validateButton');
         const cancelButton = document.getElementById('cancelButton');
