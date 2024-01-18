@@ -86,7 +86,7 @@ function setupEventListeners() {
         cancelButton.addEventListener('click', () => {
             cancelProject();
         });
-    }
+    
 
     function validateProject() {
     const title = document.getElementById('title').value;
