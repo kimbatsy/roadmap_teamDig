@@ -76,10 +76,6 @@ function setupEventListeners() {
     });
 }
 
-// ... Le reste du code
-
-
-
         const validateButton = document.getElementById('validateButton');
         const cancelButton = document.getElementById('cancelButton');
 
@@ -93,74 +89,73 @@ function setupEventListeners() {
     }
 
     function validateProject() {
-        const title = document.getElementById('title').value;
-        const target = document.getElementById('target').value;
-        const priority = document.getElementById('priority').value;
-        const department = document.getElementById('department').value;
-        const result = document.getElementById('result').value;
+    const title = document.getElementById('title').value;
+    const target = document.getElementById('target').value;
+    const priority = document.getElementById('priority').value;
+    const department = document.getElementById('department').value;
+    const result = document.getElementById('result').value;
 
-        const project = { title, target, priority, department, result };
+    const project = { title, target, priority, department, result };
 
-        addProjectToFirebase(project, (projectKey) => {
-            addToColumn(projectKey, project);
-            clearForm();
-            loadProjects();
-            cancelProject();
-        });
-    }
-
+    addProjectToFirebase(project, (projectKey) => {
+        addToColumn(projectKey, project);
+        clearForm();
+        loadProjects();
+        cancelProject();
+    });
+}
     function addToColumn(projectKey, project) {
-        const column = document.getElementById(project.target);
-        const departmentText = {
-            completed: 'Completed',
-            current: 'Current',
-            'near-term': 'Near-term',
-            future: 'Future'
-        };
-        const priorityText = {
-            high: 'High',
-            med: 'Medium',
-            low: 'Low'
-        };
+    const column = document.getElementById(project.target);
+    const departmentText = {
+        completed: 'Completed',
+        current: 'Current',
+        'near-term': 'Near-term',
+        future: 'Future'
+    };
+    const priorityText = {
+        high: 'High',
+        med: 'Medium',
+        low: 'Low'
+    };
 
-        const projectDiv = document.createElement('div');
-        projectDiv.classList.add('project');
-        projectDiv.innerHTML = `
-            <p>${project.title}</p>
-            <p>${project.department}</p>
-            <p>${priorityText[project.priority]}</p>
-            ${project.result ? `<p>${project.result}</p>` : ''}
-        `;
+    const projectDiv = document.createElement('div');
+    projectDiv.classList.add('project');
+    projectDiv.innerHTML = `
+        <p>${project.title}</p>
+        <p>${project.department}</p>
+        <p>${priorityText[project.priority]}</p>
+        ${project.result ? `<p>${project.result}</p>` : ''}
+    `;
 
-        const checkBox = document.createElement('input');
-        checkBox.type = 'checkbox';
-        checkBox.style.marginRight = '5px';
-        checkBox.addEventListener('change', () => {
-            if (checkBox.checked) {
-                modifyButton.style.display = 'inline-block';
-                deleteButton.style.display = 'inline-block';
-            } else {
-                modifyButton.style.display = 'none';
-                deleteButton.style.display = 'none';
-            }
-        });
-        projectDiv.appendChild(checkBox);
+    const checkBox = document.createElement('input');
+    checkBox.type = 'checkbox';
+    checkBox.style.marginRight = '5px';
+    checkBox.addEventListener('change', () => {
+        if (checkBox.checked) {
+            modifyButton.style.display = 'inline-block';
+            deleteButton.style.display = 'inline-block';
+        } else {
+            modifyButton.style.display = 'none';
+            deleteButton.style.display = 'none';
+        }
+    });
+    projectDiv.appendChild(checkBox);
 
-        // Utilisez les boutons déclarés globalement
-        modifyButton = document.createElement('button');
-        modifyButton.textContent = 'Edit';
-        modifyButton.style.display = 'none';
-        modifyButton.onclick = () => editProject(projectKey, project);
-        projectDiv.appendChild(modifyButton);
+    // Utilisez les boutons déclarés globalement
+    modifyButton = document.createElement('button');
+    modifyButton.textContent = 'Edit';
+    modifyButton.style.display = 'none';
+    modifyButton.onclick = () => editProject(projectKey, project);
+    projectDiv.appendChild(modifyButton);
 
-        deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.style.display = 'none';
-        deleteButton.onclick = () => deleteProject(projectKey);
-        projectDiv.appendChild(deleteButton);
+    deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.style.display = 'none';
+    deleteButton.onclick = () => deleteProject(projectKey);
+    projectDiv.appendChild(deleteButton);
 
-        column.appendChild(projectDiv);
-    }
+    column.appendChild(projectDiv);
+}
 
     function cancelProject() {
         const projectForm = document.getElementById('projectForm');
