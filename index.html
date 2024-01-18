@@ -3,8 +3,6 @@
 <head>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
-
     <meta charset="UTF-8">
     <title>Cottonline's Digitalization Roadmap</title>
     <link rel="stylesheet" href="styles.css">
@@ -13,12 +11,13 @@
 
     <div id="passwordModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" onclick="closeModal()">&times;</span>
             <p>Veuillez saisir le mot de passe :</p>
             <input type="password" id="passwordInput">
-            <button id="submitButton">Valider</button>
+            <button id="submitButton" onclick="validatePassword()">Valider</button>
         </div>
     </div>
+
 
     <div id="entête">
         <h1>Cottonline's Digitalization Roadmap </h1>
