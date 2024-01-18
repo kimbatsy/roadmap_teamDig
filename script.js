@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButton = document.getElementById('submitButton');
     const passwordInput = document.getElementById('passwordInput');
 
-    //modal.style.display = 'block';
+    modal.style.display = 'block';
     passwordInput.focus();
 
     closeButton.addEventListener('click', () => {
