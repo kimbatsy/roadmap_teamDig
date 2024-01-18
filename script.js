@@ -161,14 +161,17 @@ function setupEventListeners() {
         const projectForm = document.getElementById('projectForm');
         projectForm.style.display = 'none';
     }
+
     function clearForm() {
-    document.getElementById('title').value = '';
-    document.getElementById('target').value = 'completed'; // Remet le choix par défaut à 'Terminé'
-    document.getElementById('priority').value = 'high'; // Remet le choix par défaut à 'Haute'
-    document.getElementById('department').value = '';
-    document.getElementById('result').value = '';
-}
+        document.getElementById('title').value = '';
+        document.getElementById('target').value = 'completed';
+        document.getElementById('priority').value = 'high';
+        document.getElementById('department').value = '';
+        document.getElementById('result').value = '';
+    }
+
     function closeModal() {
-    const modal = document.getElementById('passwordModal');
-    modal.style.display = 'none';
-}
+        const modal = document.getElementById('passwordModal');
+        modal.style.display = 'none';
+    }
+})();
